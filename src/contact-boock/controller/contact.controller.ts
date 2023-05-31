@@ -18,7 +18,6 @@ export class ContactController {
   @ApiInternalServerErrorResponse({status: 500, description: 'Se ha producido un error interno en el servidor' })
   @Post()
   async createContact(@Body() contactDto: ContactDto) {
-    console.log("1");
     return await this.contactService.createContact(contactDto);
   }
 

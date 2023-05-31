@@ -21,11 +21,9 @@ export class ContactService {
 
     const contactData: Prisma.ContactCreateInput = await this.dtoToPrimaInput(contactDto);
     const createdContact = await this.contactRepository.createContact(contactData);
-    console.log(createdContact);
 
      // Transformar el objeto creado a ContactDto
     const contactToDto = plainToClass(ContactDto, createdContact);
-    console.log(contactToDto);
 
     return contactToDto;
   

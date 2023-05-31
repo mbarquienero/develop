@@ -167,7 +167,7 @@ export class ContactRepository implements IContact {
 
   async deleteContact(documentType: string, documentNumber: string): Promise<void> {
     try {
-      const contact = await this.prisma.contact.findFirst({
+      const contact:Contact = await this.prisma.contact.findFirst({
         where: {
           documentType,
           documentNumber: parseInt(documentNumber, 10),
@@ -175,7 +175,31 @@ export class ContactRepository implements IContact {
       });
 
       if (!contact) {
-        throw new NotFoundException('Contact not found');
+        throw new Error(`No se encontró el contacto con ID ${contact}`);
+      }
+
+      const phoneExists: Phone =  await this.prisma.phone.findFirst({
+        where: { contactId: contact.id },
+      });
+
+      if (phoneExists) {
+        await this.prisma.phone.deleteMany({
+          where: {
+            contactId: contact.id,
+          },
+        });
+      }
+
+      const phoneAddress: Address = await this.prisma.address.findFirst({
+        where: { contactId: contact.id },
+      });
+
+      if (phoneAddress) {
+        await this.prisma.address.deleteMany({
+          where: {
+            contactId: contact.id,
+          },
+        });
       }
 
       await this.prisma.contact.delete({
