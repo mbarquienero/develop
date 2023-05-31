@@ -75,7 +75,9 @@ $ yarn run test:cov
 ```
 ## Video
 
-https://github.com/mbarquienero/develop/assets/132913468/0607bc94-27f5-4b29-a89f-3f8ffcc5515c
+  
+https://github.com/mbarquienero/develop/assets/132913468/2508049c-ad0d-43f4-a921-f491c6cd05ad
+
 
 
 ## Support
