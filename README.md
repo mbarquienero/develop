@@ -24,14 +24,32 @@
 
 ## Description
 
+This project is a REST API based on a Contact Book. It is a backend project developed in NestJS 13 as the application server, utilizing Typescript. It uses Prisma as the ORM and MongoDB as the NoSQL database.
+The APIs are documented with Swagger.
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
 ```bash
 $ yarn install
+or
+$ npm install
 ```
-
+bash
+Modify the .env file located in the root of the project.
+DATABASE_URL="mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.lwyrfts.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority"
+<USERNAME>: Database user name
+<PASSWORD>: Database password
+<DATABASE_NAME>: Database name
+```bash
+# Generate prisma
+$ npx prisma generate
+--
+# push schema to data base
+npx prisma db push
+--
+``
 ## Running the app
 
 ```bash
