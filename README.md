@@ -73,6 +73,10 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
+## Video
+
+https://github.com/mbarquienero/develop/assets/132913468/0607bc94-27f5-4b29-a89f-3f8ffcc5515c
+
 
 ## Support
 
