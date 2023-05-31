@@ -36,20 +36,20 @@ $ yarn install
 or
 $ npm install
 ```
-bash
+## Configuration
 Modify the .env file located in the root of the project.
 DATABASE_URL="mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.lwyrfts.mongodb.net/<DATABASE_NAME>?retryWrites=true&w=majority"
 <USERNAME>: Database user name
 <PASSWORD>: Database password
 <DATABASE_NAME>: Database name
+
 ```bash
 # Generate prisma
 $ npx prisma generate
---
+
 # push schema to data base
-npx prisma db push
---
-``
+$ npx prisma db push
+```
 ## Running the app
 
 ```bash
