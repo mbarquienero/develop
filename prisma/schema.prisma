@@ -17,14 +17,18 @@ model Contact {
   email          String
   phone          Phone[]
   address        Address[]
+
+  @@unique([documentType, documentNumber])
 }
 
 model Phone {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   type        String
   numberPhone String
-  Contact     Contact @relation(fields: [contactId], references: [id])
+  Contact     Contact @relation(fields: [contactId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   contactId   String  @db.ObjectId
+
+   @@unique([type, numberPhone])
 }
 
 model Address {
@@ -33,6 +37,8 @@ model Address {
   street       String
   numberStreet Int
   description  String?
-  Contact      Contact @relation(fields: [contactId], references: [id])
+  Contact      Contact @relation(fields: [contactId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   contactId    String  @db.ObjectId
+
+  @@unique([locality])
 }
