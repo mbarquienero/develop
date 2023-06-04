@@ -16,9 +16,9 @@ export class CreateAddressDto {
 	@IsInt()
 	numberStreet: number;
 
-	@ApiProperty({required: false, nullable: true})
+	@ApiProperty({required: false})
 	@IsString()
-	description?: string | undefined;
+	description?: string;
 
 	id: string;
 

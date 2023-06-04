@@ -11,7 +11,7 @@ export class AddressEntity {
 	@ApiProperty()
 	numberStreet: number;
 
-	@ApiProperty({required: true})
+	@ApiProperty({required: false})
 	description?: string;
 
 	id: string;

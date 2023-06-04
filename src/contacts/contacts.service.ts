@@ -22,16 +22,14 @@ export class ContactsService {
 	async create(createContactDto: CreateContactDto) {
 	try {
 		
-		if (!createContactDto) 
-			throw new Error('No se ha ingresado datos para la creación de contacto'); 
-
 		const contactData: Prisma.ContactCreateInput = await this.dtoToPrimaInput(createContactDto);
-		const createdContact = await this.prisma.contact.create({data: contactData});
-
-		// Transformar el objeto creado a ContactDto
-		const contactToDto = plainToClass(ContactEntity, createdContact);
-
-		return contactToDto;
+		return await this.prisma.contact.create({
+			data: contactData,
+			include: {
+				phone: true,
+				address: true,
+			},
+		});
 
 		} catch (error) {
 			console.error('Error al crear el contacto:', error);
